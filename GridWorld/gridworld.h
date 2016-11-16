@@ -9,11 +9,13 @@ class GridWorld
 {
     public:
         GridWorld();
-        void start();
+        void start(int episode);
         void getAvailableMoves(); //updates reference type(array) of availableActions
         void chooseAction();
         void printGrid();
+        void printActionGrid();
         void initLookUpGrid();
+        void init();
 
     private:
         //2D array of [row][column]
@@ -31,15 +33,15 @@ class GridWorld
         int availableActions[4];
         int agentPosition[2]; //start position
 
-        int reward;
+        double reward;
         int numberOfMoves;
         int action;
 
-        double epilson = 0.9;
+        double epsilon = 0.1;
         double gamma = 0.9;
         double alpha = 0.1;
 
-        int currentActionValue, maxActionValue, newActionValue;
+        double currentActionValue, maxActionValue, newActionValue;
 
         std::vector<std::vector<Grid *> > lookUpGrid;
 
